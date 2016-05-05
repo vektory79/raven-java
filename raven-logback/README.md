@@ -10,12 +10,12 @@ for logback to send the logged events to Sentry.
 <dependency>
     <groupId>com.getsentry.raven</groupId>
     <artifactId>raven-logback</artifactId>
-    <version>7.2.1</version>
+    <version>7.2.2</version>
 </dependency>
 ```
 
 ### Other dependency managers
-Details in the [central Maven repository](https://search.maven.org/#artifactdetails%7Ccom.getsentry.raven%7Craven-logback%7C7.2.1%7Cjar).
+Details in the [central Maven repository](https://search.maven.org/#artifactdetails%7Ccom.getsentry.raven%7Craven-logback%7C7.2.2%7Cjar).
 
 ### Manual dependency management
 Relies on:
@@ -33,11 +33,14 @@ In the `logback.xml` file set:
 <configuration>
     <appender name="Sentry" class="com.getsentry.raven.logback.SentryAppender">
         <dsn>https://publicKey:secretKey@host:port/1?options</dsn>
+        <!-- Optional, provide tags -->
         <tags>tag1:value1,tag2:value2</tags>
-        <!-- Optional, allows to select the ravenFactory -->
-        <!--<ravenFactory>com.getsentry.raven.DefaultRavenFactory</ravenFactory>-->
-        <!-- Optional, allows setting app release information -->
-        <!-- <release>1.0.0</release>
+        <!-- Optional, provide release version of your application -->
+        <release>1.0.0</release>
+        <!-- Optional, override the server name (rather than looking it up dynamically) -->
+        <serverName>server1</serverName>
+        <!-- Optional, select the ravenFactory class -->
+        <ravenFactory>com.getsentry.raven.DefaultRavenFactory</ravenFactory>
     </appender>
     <root level="warn">
         <appender-ref ref="Sentry"/>

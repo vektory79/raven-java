@@ -10,12 +10,12 @@ for log4j to send the logged events to Sentry.
 <dependency>
     <groupId>com.getsentry.raven</groupId>
     <artifactId>raven-log4j</artifactId>
-    <version>7.2.1</version>
+    <version>7.2.2</version>
 </dependency>
 ```
 
 ### Other dependency managers
-Details in the [central Maven repository](https://search.maven.org/#artifactdetails%7Ccom.getsentry.raven%7Craven-log4j%7C7.2.1%7Cjar).
+Details in the [central Maven repository](https://search.maven.org/#artifactdetails%7Ccom.getsentry.raven%7Craven-log4j%7C7.2.2%7Cjar).
 
 ### Manual dependency management
 Relies on:
@@ -33,8 +33,13 @@ In the `log4j.properties` file set:
 log4j.rootLogger=WARN, SentryAppender
 log4j.appender.SentryAppender=com.getsentry.raven.log4j.SentryAppender
 log4j.appender.SentryAppender.dsn=https://publicKey:secretKey@host:port/1?options
+// Optional, provide tags
 log4j.appender.SentryAppender.tags=tag1:value1,tag2:value2
-# Optional, allows to select the ravenFactory
+// Optional, provide release version of your application
+log4j.appender.SentryAppender.release=1.0.0
+// Optional, override the server name (rather than looking it up dynamically)
+log4j.appender.SentryAppender.serverName=server1
+# Optional, select the ravenFactory class
 #log4j.appender.SentryAppender.ravenFactory=com.getsentry.raven.DefaultRavenFactory
 ```
 
