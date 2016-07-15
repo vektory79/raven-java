@@ -35,7 +35,7 @@ public abstract class RavenFactory {
     }
 
     private static Iterable<RavenFactory> getRegisteredFactories() {
-        List<RavenFactory> ravenFactories = new LinkedList<>();
+        List<RavenFactory> ravenFactories = new LinkedList<RavenFactory>();
         ravenFactories.addAll(MANUALLY_REGISTERED_FACTORIES);
         for (RavenFactory autoRegisteredFactory : AUTO_REGISTERED_FACTORIES) {
             ravenFactories.add(autoRegisteredFactory);

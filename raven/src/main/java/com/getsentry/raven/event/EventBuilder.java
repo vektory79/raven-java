@@ -99,6 +99,9 @@ public class EventBuilder {
         // Make the tags unmodifiable
         event.setTags(Collections.unmodifiableMap(event.getTags()));
 
+        // Make the breadcrumbs unmodifiable
+        event.setBreadcrumbs(Collections.unmodifiableList(event.getBreadcrumbs()));
+
         // Make the extra properties unmodifiable (everything in it is still mutable though)
         event.setExtra(Collections.unmodifiableMap(event.getExtra()));
 
@@ -222,6 +225,17 @@ public class EventBuilder {
     }
 
     /**
+     * Adds a list of {@code Breadcrumb}s to the event.
+     *
+     * @param breadcrumbs list of breadcrumbs
+     * @return the current {@code EventBuilder} for chained calls.
+     */
+    public EventBuilder withBreadcrumbs(List<Breadcrumb> breadcrumbs) {
+        event.setBreadcrumbs(breadcrumbs);
+        return this;
+    }
+
+    /**
      * Sets the serverName in the event.
      *
      * @param serverName name of the server responsible for the event.
@@ -251,7 +265,7 @@ public class EventBuilder {
      * @return the current {@code EventBuilder} for chained calls.
      */
     public EventBuilder withFingerprint(String... fingerprint) {
-        List<String> list = new ArrayList<>(fingerprint.length);
+        List<String> list = new ArrayList<String>(fingerprint.length);
         Collections.addAll(list, fingerprint);
         event.setFingerprint(list);
         return this;
