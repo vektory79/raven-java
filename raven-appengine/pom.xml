@@ -15,7 +15,7 @@
 
     <properties>
         <appengine-api.version>1.9.34</appengine-api.version>
-        <logback.version>1.1.7</logback.version>
+        <logback.version>1.2.0</logback.version>
     </properties>
 
     <dependencies>
